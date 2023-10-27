@@ -1,6 +1,6 @@
 public abstract class Monster extends Unit {
-    private int damage;
-    private int apcost;
+    protected int damage;
+    protected int apcost;
 
     public Monster(String name, int hp, int ap) {
         super(name, hp, ap);
