@@ -7,6 +7,5 @@ public interface Fighter {
          String getName();
          int getAp();
          int getHp();
-    }
 }
     

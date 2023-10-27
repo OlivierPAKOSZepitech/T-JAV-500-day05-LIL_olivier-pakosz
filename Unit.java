@@ -1,4 +1,4 @@
-public abstract class Unit implements Figter{
+public abstract class Unit implements Fighter{
     protected String name;
     protected int hp;
     protected int ap;
@@ -44,5 +44,9 @@ public abstract class Unit implements Figter{
     @Override
     public int getHp() {
         return hp;
+    }
+
+    public void receiveDamage(int damage){
+        hp -= damage;
     }
 }
