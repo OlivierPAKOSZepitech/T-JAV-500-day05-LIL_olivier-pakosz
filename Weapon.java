@@ -1,6 +1,6 @@
 public abstract class Weapon {
         protected String name;
-        protected int apcoast; 
+        protected int apcost; 
         protected int damage;
         protected boolean melee; 
 
@@ -9,8 +9,8 @@ public abstract class Weapon {
             return name;
         }
 
-        public int getApcoast() {
-            return apcoast;
+        public int getApcost() {
+            return apcost;
         }
 
         public int getDamage() {
@@ -21,9 +21,9 @@ public abstract class Weapon {
             return melee;
         }
 
-        protected Weapon(String name, int apcoast, int damage, boolean melee) {
+        protected Weapon(String name, int apcost, int damage, boolean melee) {
             this.name = name;
-            this.apcoast = apcoast;
+            this.apcost = apcost;
             this.damage = damage;
             this.melee = melee;
         }
