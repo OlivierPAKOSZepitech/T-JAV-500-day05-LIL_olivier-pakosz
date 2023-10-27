@@ -2,6 +2,7 @@ public abstract class Unit implements Fighter{
     protected String name;
     protected int hp;
     protected int ap;
+    protected Fighter closeToFighter;
 
     protected Unit(String name, int hp, int ap){
         this.name = name;
@@ -22,13 +23,20 @@ public abstract class Unit implements Fighter{
 
     @Override
     public boolean moveCloseTo(Fighter target) {
-        // Implement moving logic here
-        return false; // Replace with the actual implementation
+        if (target != null && closeToFighter != target && closeToFighter != this) {
+            closeToFighter = target;
+            System.out.println(this.name + " is moving closer to " + target.getName());
+            return true;
+        }
+        return false; 
     }
 
     @Override
     public void recoverAP() {
-        // Implement AP recovery logic here
+        ap += 7;
+        if (ap > 50) {
+            ap = 50;
+        }
     }
 
     @Override
@@ -46,7 +54,12 @@ public abstract class Unit implements Fighter{
         return hp;
     }
 
-    public void receiveDamage(int damage){
+
+
+    public void receiveDamage(int damage) {
         hp -= damage;
+        if (hp <= 0) {
+            hp = 0;
+        }
     }
 }
