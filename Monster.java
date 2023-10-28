@@ -1,41 +1,43 @@
 public abstract class Monster extends Unit {
-    protected int damage;
-    protected int apcost;
 
-    public Monster(String name, int hp, int ap) {
+    protected int damage = 0;
+    protected  int apcost = 0;
+
+    protected Monster(String name, int hp, int ap) {
         super(name, hp, ap);
-        this.damage = 0; 
-        this.apcost = 0;
     }
 
     public int getDamage() {
-        return damage;
+        return this.damage;
     }
 
     public int getApcost() {
-        return apcost;
+        return this.apcost;
     }
 
     @Override
-    public boolean attack(Fighter target) {
-        if (!moveCloseTo(target)) {
-            // Monster is too far away from the target
-            System.out.println(name + ": I'm too far away from " + target.getName() + ".");
-            return false;
-        }
-
-        if (ap >= apcost) {
-            // Sufficient AP to attack
-            System.out.println(name + " attacks " + target.getName() + ".");
-            ap -= apcost; // Deduct apcost from AP
-            target.receiveDamage(damage); // Call target's receiveDamage method
-            return true;
-        } else {
-            // Not enough AP to attack
-            System.out.println(name + ": I don't have enough AP to attack.");
-            return false;
-        }
+    public boolean equip(Weapon weapon) {
+        System.out.println("Monsters are proud and fight with their own bodies.");
+        return false;
     }
 
-    public abstract boolean moveCloseTo(Fighter target);
+    @Override
+    public boolean attack(Fighter fighter) {
+        if (fighter == null) {
+            return false;
+        }
+        if (this.fighterClose != fighter) {
+            System.out.println(getName() + ": I'm too far away from " + fighter.getName() + ".");
+            return false;
+        }
+        if (this.ap < this.apcost) {
+            return false;
+        }
+        this.ap -= this.apcost;
+        System.out.println(this.getName() + " attacks " + fighter.getName() + ".");
+        fighter.receiveDamage(this.damage);
+        return true;
+    }
+
+
 }
